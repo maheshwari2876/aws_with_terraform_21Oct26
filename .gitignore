@@ -1,13 +1,1 @@
-┌────────────────┐      (1) Requests JWT Token      ┌────────────────┐
-│ GitHub Actions │ ───────────────────────────────> │  GitHub OIDC   │
-│     Runner     │ <─────────────────────────────── │    Provider    │
-└────────────────┘       (2) Issues Signed JWT      └────────────────┘
-        │
-        │ (3) Exchanges JWT via AssumeRoleWithWebIdentity
-        ▼
-┌────────────────┐
-│    AWS STS     │ ── (4) Checks your OpenID Connect Provider Config
-└────────────────┘        & matches Repo/Branch in the Trust Policy.
-        │
-        ▼
-   Handshake Valid! 🔑 Returns temporary security credentials (valid for ~1 hour).
+
