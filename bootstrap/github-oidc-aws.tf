@@ -1,6 +1,6 @@
 resource "aws_iam_openid_connect_provider" "github" {
   client_id_list = ["sts.amazonaws.com"]
-  url = "https://token.actions.githubusercontent.com"
+  url            = "https://token.actions.githubusercontent.com"
 
 
 }
@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "github_actions_assume_role_policy" {
       variable = "token.actions.githubusercontent.com:sub"
       # REPLACE 'YOUR_GITHUB_ORG/YOUR_REPO' with your actual repository path
       # The trailing ':*' matches any branch, environment, or pull request within that repository.
-      values   = ["repo:github.com/maheshwari2876/aws_with_terraform_21Oct26:*"]
+      values = ["repo:github.com/maheshwari2876/aws_with_terraform_21Oct26:*"]
     }
   }
 }
@@ -43,7 +43,7 @@ resource "aws_iam_role" "github_actions_deployer" {
 # 4. Attach a specific policy to the role
 resource "aws_iam_role_policy_attachment" "deployer_permission" {
   policy_arn = aws_iam_openid_connect_provider.github.arn
-  role = aws_iam_role.github_actions_deployer.name
+  role       = aws_iam_role.github_actions_deployer.name
 }
 
 
