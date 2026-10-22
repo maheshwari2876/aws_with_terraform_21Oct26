@@ -1,2 +1,4 @@
 bootstrap/.terraf*
 test_ignore1.md
+bootstrap/terraform.tfstate
+bootstrap/terraform.tfstate.backup

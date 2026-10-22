@@ -42,9 +42,15 @@ resource "aws_iam_role" "github_actions_deployer" {
 
 # 4. Attach a specific policy to the role
 resource "aws_iam_role_policy_attachment" "deployer_permission" {
-  policy_arn = aws_iam_openid_connect_provider.github.arn
+  policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess" # later change to Custom Scoped Policy 
   role       = aws_iam_role.github_actions_deployer.name
 }
+
+
+/*
+what is best practice to assign role to OIDC role to deploy aws cloud infra resources via github action ? what permission should be associate with that role ?
+trust policy for oidc, permission policy for role, overall best practice 
+*/
 
 
 # ==============================================================================
