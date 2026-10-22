@@ -1,0 +1,29 @@
+name: AWS Deployment Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+# CRITICAL: These permissions are required for the OIDC token exchange
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  DeployToAWS:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      # The magic handshake step that replaces old static AWS Keys
+      - name: Authenticate to AWS via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::990795894249:role/github-actions-deployer-role
+          aws-region: us-east-1
+
+      # Any AWS commands run here now use safe, temporary credentials!
+      - name: Test AWS Connection
+        run: |
+          aws sts get-caller-identity
