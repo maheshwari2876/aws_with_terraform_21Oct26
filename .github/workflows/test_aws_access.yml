@@ -1,3 +1,4 @@
+# commite to run pipeline
 name: AWS Deployment Pipeline
 
 on:
@@ -15,6 +16,19 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
+
+
+      - name: Inspect OIDC claims
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const token = await core.getIDToken('sts.amazonaws.com');
+            const payload = JSON.parse(
+              Buffer.from(token.split('.')[1], 'base64url').toString()
+            );
+
+            core.info(`OIDC subject: ${payload.sub}`);
+            core.info(`OIDC audience: ${payload.aud}`);        
 
       # The magic handshake step that replaces old static AWS Keys
       - name: Authenticate to AWS via OIDC
