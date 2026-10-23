@@ -1,7 +1,7 @@
 # Initial repo structure :
 
 Note: Document and update below tree upon any changes to repo structure.  
-
+```
 ├── .github/
 │   └── workflows/
 │       ├── terraform-dev.yml      # CI/CD Pipeline for Development
@@ -27,7 +27,7 @@ Note: Document and update below tree upon any changes to repo structure.
         ├── main.tf               # Calls local modules with Prod values
         ├── variables.tf
         └── terraform.tfvars
-
+```
 
 
 
