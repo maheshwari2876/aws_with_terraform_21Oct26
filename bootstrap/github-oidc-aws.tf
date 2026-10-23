@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "github_actions_assume_role_policy" {
       variable = "token.actions.githubusercontent.com:sub"
       # REPLACE 'YOUR_GITHUB_ORG/YOUR_REPO' with your actual repository path
       # The trailing ':*' matches any branch, environment, or pull request within that repository.
-      values = ["repo:maheshwari2876/aws_with_terraform_21Oct26:*"]
+      values = ["repo:maheshwari2876@84323501/aws_with_terraform_21Oct26@1427930623:ref:refs/heads/main"]
     }
   }
 }
