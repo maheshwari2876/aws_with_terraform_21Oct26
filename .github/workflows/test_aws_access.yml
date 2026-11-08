@@ -2,8 +2,7 @@
 name: AWS Deployment Pipeline
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 
 # CRITICAL: These permissions are required for the OIDC token exchange
 permissions:
